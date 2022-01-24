@@ -36,8 +36,8 @@ public class Achievements implements Runnable{
 
     private String generateString(String name, List<String> completedAchievements) {
         String string = Formatting.DARK_GRAY + name + "'s completed achievements:\n" + Formatting.GRAY;
-        for (int i = 0; i < completedAchievements.size(); i++){
-            string = string.concat(" -  " + completedAchievements.get(i) + "\n");
+        for (String completedAchievement : completedAchievements) {
+            string = string.concat(" -  " + completedAchievement + "\n");
         }
         return string;
     }
