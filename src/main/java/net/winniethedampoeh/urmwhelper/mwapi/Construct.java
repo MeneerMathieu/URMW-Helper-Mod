@@ -46,8 +46,7 @@ public class Construct {
         String jsonString = list.toJSONString();
         ObjectMapper objectMapper = new ObjectMapper();
         try{
-            Map<String, Integer> map = objectMapper.readValue(jsonString, Map.class);
-            return map;
+            return objectMapper.readValue(jsonString, Map.class);
         }catch (Exception e){
             System.out.println(e);
             return null;

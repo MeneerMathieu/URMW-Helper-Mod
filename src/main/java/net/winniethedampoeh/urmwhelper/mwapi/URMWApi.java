@@ -1,5 +1,7 @@
 package net.winniethedampoeh.urmwhelper.mwapi;
 
+import net.winniethedampoeh.urmwhelper.URMWHelper;
+
 import me.xdrop.fuzzywuzzy.FuzzySearch;
 import me.xdrop.fuzzywuzzy.ToStringFunction;
 import me.xdrop.fuzzywuzzy.model.BoundExtractedResult;
@@ -27,7 +29,7 @@ public class URMWApi {
         try {
             return (JSONObject) parse.parse(String.valueOf(getData("info")));
         }catch (Exception e){
-            System.out.println(e);
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
@@ -41,7 +43,7 @@ public class URMWApi {
         try {
             return (JSONObject) parse.parse(String.valueOf(getData("standard-data")));
         }catch (Exception e){
-            System.out.println(e);
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
@@ -55,7 +57,7 @@ public class URMWApi {
         try {
             return (JSONArray) parse.parse(String.valueOf(getData("players")));
         }catch (Exception e){
-            System.out.println(e);
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
@@ -69,7 +71,7 @@ public class URMWApi {
         try {
             return (JSONArray) parse.parse(String.valueOf(getData("achievements")));
         }catch (Exception e){
-            System.out.println(e);
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
@@ -83,14 +85,14 @@ public class URMWApi {
         try {
             return (JSONObject) parse.parse(String.valueOf(getData("renames")));
         }catch (Exception e){
-            System.out.println("e");
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
 
     /**
      *
-     * @param playerName
+     * @param playerName playername
      * @return a JSON object with the raw data from https://urmw.markng.me/api/players, but only one player. Name has to be
      * an exact match.
      */
@@ -129,7 +131,7 @@ public class URMWApi {
      *
      * @return a list of names of all URMW players.
      */
-    public static @Nullable List<String> getPlayerList(){
+    public static List<String> getPlayerList(){
         JSONArray players = getPlayers();
         List<String> playerList = new ArrayList<>();
         for (int i = 0; i <= players.size() - 1; i++){
@@ -150,7 +152,6 @@ public class URMWApi {
         if (playerList.size() == 0){
             return null;
         }
-        System.out.println(fuzzyMatch(playerList,name));
         return fuzzyMatch(playerList,name);
     }
 
@@ -181,7 +182,7 @@ public class URMWApi {
         try {
             return (JSONArray) parse.parse(String.valueOf(getData(endpoint)));
         }catch (Exception e){
-            System.out.println("e");
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
@@ -197,7 +198,7 @@ public class URMWApi {
         try {
             return (JSONArray) parse.parse(String.valueOf(getData(endpoint)));
         }catch (Exception e){
-            System.out.println("e");
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
@@ -223,7 +224,7 @@ public class URMWApi {
                 return informationString;
             }
         }catch(Exception e){
-            System.out.println(e);
+            URMWHelper.LOGGER.info(e.toString());
             return null;
         }
     }
