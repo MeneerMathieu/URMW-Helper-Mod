@@ -1,5 +1,7 @@
 # URMW-Helper-Mod
 A mod that works with the URMW API
+Commands like /calc and /ts
+
 Very much work in progress... Still slow and buggy.
 
 
