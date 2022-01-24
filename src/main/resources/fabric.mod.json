@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "urmwhelper",
+  "version": "${version}",
+  "name": "URMW-Helper",
+  "description": "A mod that works with the URMW API",
+  "authors": [
+    "WinnieTheDampoeh"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/urmwhelper/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.winniethedampoeh.urmwhelper.URMWHelper"
+    ]
+  },
+  "mixins": [
+    "urmwhelper.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
