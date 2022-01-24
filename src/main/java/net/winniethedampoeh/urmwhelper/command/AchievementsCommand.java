@@ -12,6 +12,9 @@ public class AchievementsCommand {
         dispatcher.register(ClientCommandManager.literal("achievements")
                 .then(ClientCommandManager.argument("player", StringArgumentType.word())
                         .executes(AchievementsCommand::run)));
+        dispatcher.register(ClientCommandManager.literal("ach")
+                .then(ClientCommandManager.argument("player", StringArgumentType.word())
+                        .executes(AchievementsCommand::run)));
     }
 
     private static int run(CommandContext<FabricClientCommandSource> ctx){
