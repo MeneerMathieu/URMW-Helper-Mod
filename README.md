@@ -1,6 +1,6 @@
 # URMW-Helper-Mod
 
-URMW-Helper is a fully client side mod that works with the API. The goal of the mod is to get rid of the awkward switching between Discord and Minecraft when you want to calculate the outcome of a ranked match.
+URMW-Helper is a fully client side mod that works with the URMW API. The goal of the mod is to get rid of the awkward switching between Discord and Minecraft when you want to calculate the outcome of a ranked match.
 
 Adds commands like:
 - /calculate
