@@ -127,6 +127,19 @@ public class URMWApi {
         }
         return null;
     }
+
+
+    public static List<String> getAchievementList(){
+        JSONArray achievements = getAchievements();
+        List<String> achievementlist = new ArrayList<>();
+        for (Object achievement : achievements) {
+            JSONObject achievementData = (JSONObject) achievement;
+            String name = (String) achievementData.get("name");
+            achievementlist.add(name);
+        }
+        return achievementlist;
+    }
+
     /**
      *
      * @return a list of names of all URMW players.

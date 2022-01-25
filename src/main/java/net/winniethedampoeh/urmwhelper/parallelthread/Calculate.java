@@ -46,8 +46,9 @@ public class Calculate implements Runnable{
 
             String part0 = Formatting.DARK_GRAY + "\n---  TrueSkill calculation:  ---\n \n";
             String part1 = makeCalcString(win1, player1, player2);
-            String part2 = makeCalcString(win2, player2, player1);
-            MutableText message = new LiteralText(part0 + part1 + part2);
+            String part2 = "\n";
+            String part3 = makeCalcString(win2, player2, player1);
+            MutableText message = new LiteralText(part0 + part1 + part2 + part3);
 
             ctx.getSource().sendFeedback(message);
         }catch (Exception e){
@@ -60,12 +61,12 @@ public class Calculate implements Runnable{
     }
 
     private static String makeCalcString(List<Rating> ratings, MWPlayer winner, MWPlayer loser){
-        String line0 = Formatting.WHITE + "If " + winner.getName() + " wins:\n";
+        String line0 = Formatting.AQUA + "If " + winner.getName() + " wins:\n";
         String line1 = makeLine(ratings, winner, 0);
         String line2 = makeLine(ratings, loser, 1);
-        String line3 = " \n";
 
-        return line0 + line1 + line2 + line3;
+
+        return line0 + line1 + line2;
     }
 
 
@@ -89,7 +90,7 @@ public class Calculate implements Runnable{
         }else{
             dDV = String.valueOf(ddv);
         }
-        String line = Formatting.WHITE + player.getName() + ": " + Formatting.GRAY  + "(" + dTS + ", " + dDV + ")   ("+ ts + ", " + dv + " -> " + newts + ", " + newdv + ")\n";
+        String line = "  " + Formatting.DARK_AQUA + player.getName() + ": " + Formatting.WHITE  + "(" + dTS + ", " + dDV + ")  " + Formatting.GRAY + " ("+ ts + ", " + dv + " -> " + newts + ", " + newdv + ")\n";
         return line;
     }
 }

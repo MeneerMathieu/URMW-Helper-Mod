@@ -40,7 +40,7 @@ public class Stats implements Runnable{
         int placedThird = player.getTimesPlacedThird();
         int completedAchievements = player.getCompletedAchievements().size();
 
-        String line0 = Formatting.DARK_GRAY + name + "'s stats:\n";
+        String line0 = Formatting.AQUA + name + "'s stats:\n";
         String line1 = Formatting.GRAY + "  Skill: " + Formatting.WHITE + "(" + skill.getConservativeRating() + ", " + skill.getStandardDeviation() + ")"
                 + Formatting.GRAY + "  Peak skill: " + Formatting.WHITE + "(" + peakSkill.getConservativeRating() + ", " + peakSkill.getStandardDeviation() + ")\n";
         String line2 = Formatting.GRAY + "  Ranking: " + Formatting.WHITE + "(" + rankName + ", " + ranking + ")"

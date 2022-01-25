@@ -33,9 +33,9 @@ public class Achievement implements Runnable {
         String description = achievement.getDescription();
         List<MWPlayer> playersCompleted = achievement.getPlayersCompleted();
 
-        String line0 = Formatting.DARK_GRAY + "Achievement: " + Formatting.BOLD + Formatting.DARK_BLUE  + name + "\n";
-        String line1 = Formatting.WHITE + description + "\n";
-        String line2 = generateString(playersCompleted);
+        String line0 = Formatting.DARK_GRAY + "Achievement: " + Formatting.AQUA  + name + "\n";
+        String line1 = Formatting.GRAY + "  " + description + "\n";
+        String line2 = Formatting.DARK_AQUA + "  " + generateString(playersCompleted);
         ctx.getSource().sendFeedback(new LiteralText(line0 + line1 +line2));
     }
 

@@ -46,7 +46,7 @@ public class TrueSkill implements Runnable{
         int trueskill = (int) round(player.getSkill().getConservativeRating());
         int deviation = (int) round(player.getSkill().getStandardDeviation());
 
-        String msg = Formatting.WHITE +urmwName + "'s Trueskill: " + Formatting.GRAY + "(" + trueskill + ", " + deviation + ")";
+        String msg = Formatting.AQUA +urmwName +  Formatting.WHITE + "'s Trueskill: " + Formatting.GRAY + "(" + trueskill + ", " + deviation + ")";
         MutableText message = new LiteralText(msg).formatted(Formatting.RED);
         context.getSource().sendFeedback(message);
     }

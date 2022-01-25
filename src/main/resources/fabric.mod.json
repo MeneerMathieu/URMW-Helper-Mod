@@ -12,7 +12,7 @@
     "issues": "https://github.com/MeneerMathieu/URMW-Helper-Mod/issues",
     "homepage": "https://www.youtube.com/channel/UC04_IyVhj688jBOnJd-Dd1A"
   },
-  "license": "MIT",
+  "license": "GPL-2.0",
   "icon": "assets/urmwhelper/icon.png",
   "environment": "client",
   "entrypoints": {
