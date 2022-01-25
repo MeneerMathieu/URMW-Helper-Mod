@@ -7,10 +7,14 @@
   "authors": [
     "WinnieTheDampoeh"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/MeneerMathieu/URMW-Helper-Mod",
+    "issues": "https://github.com/MeneerMathieu/URMW-Helper-Mod/issues",
+    "homepage": "https://www.youtube.com/channel/UC04_IyVhj688jBOnJd-Dd1A"
+  },
   "license": "MIT",
   "icon": "assets/urmwhelper/icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "net.winniethedampoeh.urmwhelper.URMWHelper"
