@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.minecraft.server.command.AdvancementCommand;
 import net.winniethedampoeh.urmwhelper.command.AchievementsCommand;
 import net.winniethedampoeh.urmwhelper.command.CalculateCommand;
+import net.winniethedampoeh.urmwhelper.command.StatsCommand;
 import net.winniethedampoeh.urmwhelper.command.TrueSkillCommand;
 
 public class ModCommandRegister {
@@ -11,5 +12,6 @@ public class ModCommandRegister {
         TrueSkillCommand.register(ClientCommandManager.DISPATCHER);
         CalculateCommand.register(ClientCommandManager.DISPATCHER);
         AchievementsCommand.register(ClientCommandManager.DISPATCHER);
+        StatsCommand.register(ClientCommandManager.DISPATCHER);
     }
 }
