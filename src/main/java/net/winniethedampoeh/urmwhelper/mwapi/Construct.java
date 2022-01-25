@@ -55,15 +55,23 @@ public class Construct {
 
     protected static List<String> listFromJSONArray(JSONArray array){
         List<String> list = new ArrayList<>();
-        for(int i = 0; i < array.size() -1; i++){
+        for(int i = 0; i < array.size(); i++){
             list.add(i, (String) array.get(i));
+        }
+        return list;
+    }
+
+    protected static List<String> listFromNestedJSONArray(JSONArray array, String name){
+        List<String> list = new ArrayList<>();
+        for(int i = 0; i < array.size(); i++){
+            list.add(i, (String) ((JSONObject) array.get(i)).get(name));
         }
         return list;
     }
 
     protected static @NotNull List<MWPlayer> playerListFromJSONArray(@NotNull JSONArray array){
         List<MWPlayer> list = new ArrayList<>();
-        for (int i = 0; i < array.size() - 1; i++){
+        for (int i = 0; i < array.size(); i++){
             MWPlayer player = new MWPlayer((String) array.get(i));
             list.add(i, player);
         }
@@ -72,7 +80,7 @@ public class Construct {
 
     protected static List<MatchesPlayer> matchesPlayers(JSONArray players){
         List<MatchesPlayer> list = new ArrayList<>();
-        for (int i = 0; i < players.size() - 1; i++){
+        for (int i = 0; i < players.size(); i++){
             MatchesPlayer player = new MatchesPlayer((JSONObject) players.get(i));
             list.add(i, player);
         }

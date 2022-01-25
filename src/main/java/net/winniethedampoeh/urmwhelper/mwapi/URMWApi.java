@@ -98,10 +98,10 @@ public class URMWApi {
      */
     public static @Nullable JSONObject getPlayerData(String playerName){
         JSONArray players = getPlayers();
-        for (int i = 0; i <= players.size() - 1; i++){
-            JSONObject playerData = (JSONObject) players.get(i);
+        for (Object player : players) {
+            JSONObject playerData = (JSONObject) player;
             String name = (String) playerData.get("name");
-            if (Objects.equals(name, playerName)){
+            if (Objects.equals(name, playerName)) {
                 return playerData;
             }
         }
@@ -116,12 +116,12 @@ public class URMWApi {
      */
     public static JSONObject getAchievementData(String name) {
         JSONArray achievements = getAchievements();
-        assert achievements != null;
-        String keyword = fuzzyMatch(Construct.listFromJSONArray(achievements),name);
-        for(int i = 0; i < achievements.size() -1; i++){
-            JSONObject achievementData = (JSONObject) achievements.get(i);
+        if (achievements == null) throw new AssertionError();
+        String keyword = fuzzyMatch(Construct.listFromNestedJSONArray(achievements, "name"),name);
+        for (Object achievement : achievements) {
+            JSONObject achievementData = (JSONObject) achievement;
             String achievementName = (String) achievementData.get("name");
-            if(Objects.equals(keyword,achievementName)){
+            if (Objects.equals(keyword, achievementName)) {
                 return achievementData;
             }
         }
@@ -134,8 +134,8 @@ public class URMWApi {
     public static List<String> getPlayerList(){
         JSONArray players = getPlayers();
         List<String> playerList = new ArrayList<>();
-        for (int i = 0; i <= players.size() - 1; i++){
-            JSONObject playerData = (JSONObject) players.get(i);
+        for (Object player : players) {
+            JSONObject playerData = (JSONObject) player;
             String name = (String) playerData.get("name");
             playerList.add(name);
         }

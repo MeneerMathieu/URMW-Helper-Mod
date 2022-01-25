@@ -12,7 +12,7 @@ public class AchievementsCommand {
         dispatcher.register(ClientCommandManager.literal("achievements")
                 .then(ClientCommandManager.argument("player", StringArgumentType.word())
                         .executes(AchievementsCommand::run)));
-        dispatcher.register(ClientCommandManager.literal("ach")
+        dispatcher.register(ClientCommandManager.literal("achs")
                 .then(ClientCommandManager.argument("player", StringArgumentType.word())
                         .executes(AchievementsCommand::run)));
     }
