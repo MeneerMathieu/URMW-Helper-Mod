@@ -8,6 +8,10 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
 
+import java.util.Locale;
+
+import static java.lang.Math.round;
+
 public class Stats implements Runnable{
     private final CommandContext<FabricClientCommandSource> ctx;
 
@@ -32,6 +36,7 @@ public class Stats implements Runnable{
         Rating peakSkill = player.getPeakSkill();
         int ranking = player.getRanking();
         String rankName = player.getRankName();
+        String RankName = rankName.substring(0,1).toUpperCase(Locale.ENGLISH) + rankName.substring(1);
         int wins = player.getWins();
         int losses = player.getLosses();
         int streak = player.getStreak();
@@ -41,9 +46,9 @@ public class Stats implements Runnable{
         int completedAchievements = player.getCompletedAchievements().size();
 
         String line0 = Formatting.AQUA + name + "'s stats:\n";
-        String line1 = Formatting.GRAY + "  Skill: " + Formatting.WHITE + "(" + skill.getConservativeRating() + ", " + skill.getStandardDeviation() + ")"
-                + Formatting.GRAY + "  Peak skill: " + Formatting.WHITE + "(" + peakSkill.getConservativeRating() + ", " + peakSkill.getStandardDeviation() + ")\n";
-        String line2 = Formatting.GRAY + "  Ranking: " + Formatting.WHITE + "(" + rankName + ", " + ranking + ")"
+        String line1 = Formatting.GRAY + "  Skill: " + Formatting.WHITE + "(" + (int) round(skill.getConservativeRating()) + ", " + (int) round(skill.getStandardDeviation()) + ")"
+                + Formatting.GRAY + "  Peak skill: " + Formatting.WHITE + "(" + (int) round(peakSkill.getConservativeRating()) + ", " + (int) round(peakSkill.getStandardDeviation()) + ")\n";
+        String line2 = Formatting.GRAY + "  Ranking: " + Formatting.WHITE + "(" + RankName + ", " + ranking + ")"
                 + Formatting.GRAY + "  Completed achievements: " + Formatting.WHITE + completedAchievements + "\n";
         String line3 = Formatting.GRAY + "  Matches won: " + Formatting.WHITE + wins
                 + Formatting.GRAY + "    Matches lost: " + Formatting.WHITE + losses + "\n";

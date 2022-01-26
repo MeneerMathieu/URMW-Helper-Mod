@@ -10,10 +10,7 @@ import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.URMWHelper;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
 
-import java.text.Format;
-import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 

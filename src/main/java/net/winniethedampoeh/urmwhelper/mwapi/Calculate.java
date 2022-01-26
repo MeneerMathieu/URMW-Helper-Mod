@@ -2,7 +2,6 @@ package net.winniethedampoeh.urmwhelper.mwapi;
 
 import de.gesundkrank.jskills.*;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.system.CallbackI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
