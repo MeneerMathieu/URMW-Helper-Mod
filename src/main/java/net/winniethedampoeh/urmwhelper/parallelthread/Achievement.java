@@ -23,7 +23,7 @@ public class Achievement implements Runnable {
         CommandContext<FabricClientCommandSource> ctx = this.ctx;
         MWAchievement achievement;
         try{
-            achievement = new MWAchievement(StringArgumentType.getString(ctx, "name"));
+            achievement = new MWAchievement(StringArgumentType.getString(ctx, "achievement"));
         }catch (Exception e){
             ctx.getSource().sendFeedback(new LiteralText(Formatting.RED + "Achievement not found."));
             URMWHelper.LOGGER.info(e.getLocalizedMessage());

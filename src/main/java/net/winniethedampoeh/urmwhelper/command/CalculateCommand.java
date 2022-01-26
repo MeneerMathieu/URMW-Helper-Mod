@@ -12,11 +12,13 @@ public class CalculateCommand {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(ClientCommandManager.literal("calculate")
-                .then(ClientCommandManager.argument("args", StringArgumentType.greedyString())
-                        .executes(CalculateCommand::run)));
+                .then(ClientCommandManager.argument("team 1", StringArgumentType.string())
+                        .then(ClientCommandManager.argument("team 2", StringArgumentType.string())
+                                .executes(CalculateCommand::run))));
         dispatcher.register(ClientCommandManager.literal("calc")
-                .then(ClientCommandManager.argument("args", StringArgumentType.greedyString())
-                        .executes(CalculateCommand::run)));
+                .then(ClientCommandManager.argument("team 1", StringArgumentType.string())
+                        .then(ClientCommandManager.argument("team 2", StringArgumentType.string())
+                                .executes(CalculateCommand::run))));
     }
 
 

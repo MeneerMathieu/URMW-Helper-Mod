@@ -15,10 +15,10 @@ public class TrueSkillCommand {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(ClientCommandManager.literal("trueskill")
-                .then(ClientCommandManager.argument("arg", StringArgumentType.word())
+                .then(ClientCommandManager.argument("player", StringArgumentType.word())
                         .executes(TrueSkillCommand::run)));
         dispatcher.register(ClientCommandManager.literal("ts")
-                .then(ClientCommandManager.argument("arg",StringArgumentType.word())
+                .then(ClientCommandManager.argument("player",StringArgumentType.word())
                         .executes(TrueSkillCommand::run)));
     }
 

@@ -20,7 +20,7 @@ public class Stats implements Runnable{
         CommandContext<FabricClientCommandSource> ctx = this.ctx;
         MWPlayer player;
         try{
-            player = new MWPlayer(StringArgumentType.getString(ctx,"name"));
+            player = new MWPlayer(StringArgumentType.getString(ctx,"player"));
         }catch (Exception e){
             String message = Formatting.RED + "Player not found.";
             ctx.getSource().sendFeedback(new LiteralText(message));

@@ -26,7 +26,7 @@ public class TrueSkill implements Runnable{
         MWPlayer player;
         String arg;
         try{
-            arg= StringArgumentType.getString(context, "arg");
+            arg= StringArgumentType.getString(context, "player");
         }catch (IllegalArgumentException ignored){
             arg = " ";
         }

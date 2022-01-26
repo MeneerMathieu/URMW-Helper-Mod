@@ -10,10 +10,10 @@ import net.winniethedampoeh.urmwhelper.parallelthread.Achievement;
 public class AchievementCommand {
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(ClientCommandManager.literal("achievement")
-                .then(ClientCommandManager.argument("name", StringArgumentType.greedyString())
+                .then(ClientCommandManager.argument("achievement", StringArgumentType.greedyString())
                         .executes(AchievementCommand::run)));
         dispatcher.register(ClientCommandManager.literal("ach")
-                .then(ClientCommandManager.argument("name", StringArgumentType.greedyString())
+                .then(ClientCommandManager.argument("achievement", StringArgumentType.greedyString())
                         .executes(AchievementCommand::run)));
     }
 

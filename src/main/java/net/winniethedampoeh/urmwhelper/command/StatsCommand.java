@@ -11,7 +11,7 @@ import net.winniethedampoeh.urmwhelper.parallelthread.Stats;
 public class StatsCommand {
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(ClientCommandManager.literal("stats")
-                .then(ClientCommandManager.argument("name", StringArgumentType.word())
+                .then(ClientCommandManager.argument("player", StringArgumentType.word())
                         .executes(StatsCommand::run)));
     }
 
