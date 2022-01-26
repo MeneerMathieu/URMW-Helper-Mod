@@ -11,6 +11,9 @@ Adds commands like:
 
 And their aliases. Work in progress to add more.
 
+# Requirements:
+- Fabric API
+
 # NOW A FIRST RELEASE
 
 
