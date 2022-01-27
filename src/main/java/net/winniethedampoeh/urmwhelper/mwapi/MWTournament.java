@@ -28,14 +28,12 @@ public class MWTournament {
     public MWTournament(int get, sortType sortType) {
         JSONObject tourney = null;
         switch (sortType) {
-            case byID:
+            case BY_ID -> {
                 int tourneyCount = new MWInfo().getTourneyCount();
                 int numberOfTourneys = tourneyCount - get;
                 tourney = (JSONObject) URMWApi.getRecentTourneys(numberOfTourneys).get(numberOfTourneys - 1);
-                break;
-            case recent:
-                tourney = (JSONObject) URMWApi.getRecentTourneys(get).get(get-1);
-                break;
+            }
+            case RECENT -> tourney = (JSONObject) URMWApi.getRecentTourneys(get).get(get - 1);
         }
         this.id = (int) (long) tourney.get("id");
         this.first = Construct.playerListFromJSONArray((JSONArray) tourney.get("first"));

@@ -27,15 +27,13 @@ public class MWMatch {
      */
     public MWMatch(int get, sortType sortType){
         JSONObject match = null;
-        switch (sortType){
-            case byID:
+        switch (sortType) {
+            case BY_ID -> {
                 int matchCount = new MWInfo().getMatchCount();
                 int numberOfMatches = matchCount - get;
                 match = (JSONObject) URMWApi.getRecentMatches(numberOfMatches).get(numberOfMatches - 1);
-                break;
-            case recent:
-                match = (JSONObject) URMWApi.getRecentMatches(get).get(get - 1);
-                break;
+            }
+            case RECENT -> match = (JSONObject) URMWApi.getRecentMatches(get).get(get - 1);
         }
         this.id = (int) (long) match.get("id");
         this.winners = Construct.matchesPlayers((JSONArray) match.get("winners"));

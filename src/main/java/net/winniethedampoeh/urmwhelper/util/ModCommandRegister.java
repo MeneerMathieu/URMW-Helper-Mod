@@ -10,5 +10,6 @@ public class ModCommandRegister {
         CalculateCommand.register(ClientCommandManager.DISPATCHER);
         StatsCommand.register(ClientCommandManager.DISPATCHER);
         TrueSkillCommand.register(ClientCommandManager.DISPATCHER);
+        TournamentCommand.register(ClientCommandManager.DISPATCHER);
     }
 }

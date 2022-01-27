@@ -1,6 +1,6 @@
 package net.winniethedampoeh.urmwhelper.mwapi;
 
 public enum sortType {
-    recent,
-    byID
+    RECENT,
+    BY_ID
 }
