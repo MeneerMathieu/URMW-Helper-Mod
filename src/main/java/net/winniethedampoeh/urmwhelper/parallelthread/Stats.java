@@ -48,7 +48,7 @@ public class Stats implements Runnable{
         String line0 = Formatting.AQUA + name + "'s stats:\n";
         String line1 = Formatting.GRAY + "  Skill: " + Formatting.WHITE + "(" + (int) round(skill.getConservativeRating()) + ", " + (int) round(skill.getStandardDeviation()) + ")"
                 + Formatting.GRAY + "  Peak skill: " + Formatting.WHITE + "(" + (int) round(peakSkill.getConservativeRating()) + ", " + (int) round(peakSkill.getStandardDeviation()) + ")\n";
-        String line2 = Formatting.GRAY + "  Ranking: " + Formatting.WHITE + "(" + RankName + ", " + ranking + ")"
+        String line2 = Formatting.GRAY + "  Ranking: " + Formatting.WHITE + "(" + RankName + ", " + ranking + 1 + ")"
                 + Formatting.GRAY + "  Completed achievements: " + Formatting.WHITE + completedAchievements + "\n";
         String line3 = Formatting.GRAY + "  Matches won: " + Formatting.WHITE + wins
                 + Formatting.GRAY + "    Matches lost: " + Formatting.WHITE + losses + "\n";

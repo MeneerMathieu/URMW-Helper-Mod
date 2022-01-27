@@ -59,12 +59,14 @@ public class Calculate implements Runnable{
         List<Map<MWPlayer, Rating>> win1 = net.winniethedampoeh.urmwhelper.mwapi.Calculate.calc(team1, team2);
         List<Map<MWPlayer, Rating>> win2 = net.winniethedampoeh.urmwhelper.mwapi.Calculate.calc(team2, team1);
 
-        String part0 = Formatting.DARK_GRAY + "---  TrueSkill calculation:  ---\n \n";
+        String part0 = Formatting.DARK_GRAY + "---  TrueSkill calculation:  ---\n";
+        String part01 = Formatting.DARK_AQUA + "Team 1:  " + Formatting.GRAY + printTeam(team1) + "\n";
+        String part02 = Formatting.DARK_AQUA + "Team 2:  " + Formatting.GRAY + printTeam(team2) + "\n\n";
         String part1 = Formatting.AQUA + "If team 1 wins:\n" +
                 makeCalcString(win1) + "\n";
         String part2 = Formatting.AQUA + "If team 2 wins:\n" +
                 makeCalcString(win2);
-        MutableText message = new LiteralText(part0 + part1 + part2);
+        MutableText message = new LiteralText(part0 + part01 + part02 + part1 + part2);
 
         ctx.getSource().sendFeedback(message);
 
@@ -80,6 +82,13 @@ public class Calculate implements Runnable{
     }
 
 
+    private static String printTeam(List<MWPlayer> team){
+        String print ="";
+        for (MWPlayer player : team){
+            print = print.concat(player.getName()) + " ";
+        }
+        return print;
+    }
 
     private static String makeLine(List<Map<MWPlayer, Rating>> ratings, int index){
         String line = "";
