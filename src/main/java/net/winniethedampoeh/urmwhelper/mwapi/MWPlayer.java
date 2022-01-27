@@ -16,6 +16,7 @@ public class MWPlayer {
     private final int ranking;
     private final int wins;
     private final int losses;
+    private final float winRatio;
     private final int timesPlacedFirst;
     private final int timesPlacedSecond;
     private final int timesPlacedThird;
@@ -37,6 +38,7 @@ public class MWPlayer {
         this.ranking = Math.toIntExact((long) playerData.get("ranking"));
         this.wins = Math.toIntExact((long) playerData.get("wins"));
         this.losses = Math.toIntExact((long) playerData.get("losses"));
+        this.winRatio = (float) this.wins/(this.wins + this.losses);
         this.timesPlacedFirst =  Math.toIntExact((long) playerData.get("timesPlacedFirst"));
         this.timesPlacedSecond =  Math.toIntExact((long) playerData.get("timesPlacedSecond"));
         this.timesPlacedThird =  Math.toIntExact((long) playerData.get("timesPlacedThird"));
@@ -89,6 +91,10 @@ public class MWPlayer {
      */
     public int getLosses(){
         return this.losses;
+    }
+
+    public float getWinRatio(){
+        return this.winRatio;
     }
 
     public int getTimesPlacedFirst(){

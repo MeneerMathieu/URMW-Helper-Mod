@@ -6,6 +6,7 @@ import de.gesundkrank.jskills.Rating;
 import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
+import net.winniethedampoeh.urmwhelper.command.CommandTarget;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
 
 import java.util.Locale;
@@ -14,17 +15,23 @@ import static java.lang.Math.round;
 
 public class Stats implements Runnable{
     private final CommandContext<FabricClientCommandSource> ctx;
+    private final CommandTarget target;
 
-    public Stats(CommandContext<FabricClientCommandSource> ctx){
+    public Stats(CommandContext<FabricClientCommandSource> ctx, CommandTarget target){
         this.ctx = ctx;
+        this.target = target;
     }
 
     @Override
     public void run(){
         CommandContext<FabricClientCommandSource> ctx = this.ctx;
-        MWPlayer player;
+        CommandTarget target = this.target;
+        MWPlayer player = null;
         try{
-            player = new MWPlayer(StringArgumentType.getString(ctx,"player"));
+            switch (target){
+                case SENDER -> player = new MWPlayer(ctx.getSource().getPlayer().getName().asString());
+                case STRING -> player = new MWPlayer(StringArgumentType.getString(ctx, "player"));
+            }
         }catch (Exception e){
             String message = Formatting.RED + "Player not found.";
             ctx.getSource().sendFeedback(new LiteralText(message));
@@ -40,6 +47,7 @@ public class Stats implements Runnable{
         int wins = player.getWins();
         int losses = player.getLosses();
         int streak = player.getStreak();
+        float winRatio = player.getWinRatio();
         int placedFirst = player.getTimesPlacedFirst();
         int placedSecond = player.getTimesPlacedSecond();
         int placedThird = player.getTimesPlacedThird();
@@ -52,7 +60,7 @@ public class Stats implements Runnable{
                 + Formatting.GRAY + "  Completed achievements: " + Formatting.WHITE + completedAchievements + "\n";
         String line3 = Formatting.GRAY + "  Matches won: " + Formatting.WHITE + wins
                 + Formatting.GRAY + "    Matches lost: " + Formatting.WHITE + losses + "\n";
-        String line4 = Formatting.GRAY + "  Streak: " + Formatting.WHITE + streak + "\n";
+        String line4 = Formatting.GRAY + "  Streak: " + Formatting.WHITE + streak + Formatting.GRAY + "  Win ratio: " + Formatting.WHITE + String.format("%.0f",winRatio * 100) + "%" + "\n";
         String line5 = Formatting.GRAY + "  Tourneys:\n";
         String line6 = Formatting.GRAY + "  1st: " + Formatting.WHITE + placedFirst + Formatting.GRAY + "  2nd: " + Formatting.WHITE
                 + placedSecond + Formatting.GRAY + "  3rd: " + Formatting.WHITE + placedThird;
