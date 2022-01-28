@@ -15,14 +15,19 @@ import static java.lang.Math.round;
 public class RankList implements Runnable{
 
     private final CommandContext<FabricClientCommandSource> ctx;
+    private final int from;
+    private final int to;
 
-    public RankList(CommandContext<FabricClientCommandSource> ctx){
+    public RankList(CommandContext<FabricClientCommandSource> ctx, int from, int to){
         this.ctx = ctx;
+        this.from = from;
+        this.to = to;
     }
 
     @Override
     public void run(){
         CommandContext<FabricClientCommandSource> ctx = this.ctx;
+
         JSONArray playersData;
         try {
             playersData = URMWApi.getPlayers();
@@ -31,8 +36,8 @@ public class RankList implements Runnable{
             return;
         }
 
-        int from = IntegerArgumentType.getInteger(ctx, "from");
-        int to = IntegerArgumentType.getInteger(ctx, "to");
+        int from = this.from;
+        int to = this.to;
         assert playersData != null;
         String players = "";
         for (Object object : playersData){
