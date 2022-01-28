@@ -15,9 +15,11 @@ public class TrueSkillCommand {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(ClientCommandManager.literal("trueskill")
+                        .executes(TrueSkillCommand::sender)
                 .then(ClientCommandManager.argument("player", StringArgumentType.word())
                         .executes(TrueSkillCommand::run)));
         dispatcher.register(ClientCommandManager.literal("ts")
+                        .executes(TrueSkillCommand::sender)
                 .then(ClientCommandManager.argument("player",StringArgumentType.word())
                         .executes(TrueSkillCommand::run)));
     }
@@ -28,7 +30,11 @@ public class TrueSkillCommand {
         Runnable r = new TrueSkill(context);
         new Thread(r).start();
         return 1;
+    }
 
-
+    private static int sender(CommandContext<FabricClientCommandSource> ctx){
+        Runnable r = new TrueSkill(ctx, true);
+        new Thread(r).start();
+        return 1;
     }
 }

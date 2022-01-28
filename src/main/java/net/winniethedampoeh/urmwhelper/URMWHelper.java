@@ -18,6 +18,6 @@ public class URMWHelper implements ModInitializer {
         // Proceed with mild caution.
 
         ModCommandRegister.registerCommands();
-        LOGGER.info("Hello Fabric world!");
+        LOGGER.info("URWM-Helper loaded.");
     }
 }

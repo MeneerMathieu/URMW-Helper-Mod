@@ -15,9 +15,16 @@ import static java.lang.Math.round;
 public class TrueSkill implements Runnable{
 
     private final CommandContext<FabricClientCommandSource> ctx;
+    private final boolean sender;
 
     public TrueSkill(CommandContext<FabricClientCommandSource> ctx){
         this.ctx = ctx;
+        this.sender = false;
+    }
+
+    public TrueSkill(CommandContext<FabricClientCommandSource> ctx, boolean sender){
+        this.ctx = ctx;
+        this.sender = sender;
     }
 
     @Override
@@ -26,7 +33,7 @@ public class TrueSkill implements Runnable{
         MWPlayer player;
         String arg;
         try{
-            arg= StringArgumentType.getString(context, "player");
+            arg = StringArgumentType.getString(context, "player");
         }catch (IllegalArgumentException ignored){
             arg = " ";
         }

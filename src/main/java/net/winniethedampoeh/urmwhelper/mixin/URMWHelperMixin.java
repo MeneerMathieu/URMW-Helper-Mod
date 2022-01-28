@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class URMWHelperMixin {
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
-        URMWHelper.LOGGER.info("starting...");
+
+        //URMWHelper.LOGGER.info("starting...");
     }
 }
