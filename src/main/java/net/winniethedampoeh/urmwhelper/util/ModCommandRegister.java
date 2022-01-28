@@ -12,5 +12,6 @@ public class ModCommandRegister {
         TrueSkillCommand.register(ClientCommandManager.DISPATCHER);
         TournamentCommand.register(ClientCommandManager.DISPATCHER);
         MatchCommand.register(ClientCommandManager.DISPATCHER);
+        RankListCommand.register(ClientCommandManager.DISPATCHER);
     }
 }
