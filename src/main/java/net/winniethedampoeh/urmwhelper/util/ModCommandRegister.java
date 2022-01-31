@@ -2,6 +2,7 @@ package net.winniethedampoeh.urmwhelper.util;
 
 import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.winniethedampoeh.urmwhelper.command.*;
+import net.winniethedampoeh.urmwhelper.parallelthread.MWUnlink;
 
 public class ModCommandRegister {
     public static void registerCommands() {
@@ -13,5 +14,7 @@ public class ModCommandRegister {
         TournamentCommand.register(ClientCommandManager.DISPATCHER);
         MatchCommand.register(ClientCommandManager.DISPATCHER);
         RankListCommand.register(ClientCommandManager.DISPATCHER);
+        MWLinkCommand.register(ClientCommandManager.DISPATCHER);
+        MWUnlinkCommand.register(ClientCommandManager.DISPATCHER);
     }
 }

@@ -5,6 +5,7 @@ import net.winniethedampoeh.urmwhelper.URMWHelper;
 import me.xdrop.fuzzywuzzy.FuzzySearch;
 import me.xdrop.fuzzywuzzy.ToStringFunction;
 import me.xdrop.fuzzywuzzy.model.BoundExtractedResult;
+import net.winniethedampoeh.urmwhelper.config.Config;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.simple.JSONArray;
@@ -218,7 +219,8 @@ public class URMWApi {
 
     private static @Nullable StringBuilder getData(String endpoint){
         try {
-            URL url = new URL("https://urmw.markng.me/api/" + endpoint);
+          //URMWHelper.LOGGER.info(URMWHelper.getInstance().getConfig().getWebAddress());
+            URL url = new URL( new Config().getWebAddress() + endpoint);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
