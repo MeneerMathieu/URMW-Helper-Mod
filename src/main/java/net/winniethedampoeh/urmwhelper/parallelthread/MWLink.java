@@ -3,13 +3,9 @@ package net.winniethedampoeh.urmwhelper.parallelthread;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.command.argument.EntityArgumentType;
-import net.minecraft.entity.Entity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.URMWHelper;
-import net.winniethedampoeh.urmwhelper.config.Config;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
 import net.winniethedampoeh.urmwhelper.storage.UuidMap;
 import org.jetbrains.annotations.Nullable;
@@ -68,8 +64,9 @@ public class MWLink implements Runnable{
             UuidMap.addMap(mwPlayer, uuid);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
+            return;
         }
-
+        ctx.getSource().sendFeedback(new LiteralText(Formatting.GRAY + mwPlayer.getName() + " linked with " + uuid.toString() + " (" + player + ")" ));
     }
 
     private static @Nullable StringBuilder getData(String endpoint){
