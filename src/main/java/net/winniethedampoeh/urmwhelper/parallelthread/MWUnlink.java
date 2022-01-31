@@ -32,6 +32,8 @@ public class MWUnlink implements Runnable{
             UuidMap.removeMap(mwPlayer);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
+            return;
         }
+        ctx.getSource().sendFeedback(new LiteralText(Formatting.GRAY + "Cleared the UUID mapping from " + mwPlayer.getName()));
     }
 }
