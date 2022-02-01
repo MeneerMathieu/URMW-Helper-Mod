@@ -41,6 +41,8 @@ public class NameTagRendererMixin<T extends Entity> {
     @Final
     private TextRenderer textRenderer;
 
+    private static int coolDown = 0;
+
     @Shadow
     @Final
     protected EntityRenderDispatcher dispatcher;
@@ -69,7 +71,7 @@ public class NameTagRendererMixin<T extends Entity> {
                         }
                         String TS = String.valueOf((int) round(mwPlayer.getSkill().getConservativeRating()));
                         int Ranking = mwPlayer.getRanking() + 1;
-                        MutableText text = new LiteralText(TS + "TS, " + Ranking + getSuffix(Ranking));
+                        MutableText text = new LiteralText(TS + " TS, " + Ranking + getSuffix(Ranking));
                         float scale = 0.05f * URMWHelper.getInstance().getConfig().getScale();
                         float f = ((Entity)entity).getHeight() + URMWHelper.getInstance().getConfig().getHeight();
                         int i = "deadmau5".equals(text.getString()) ? -10 : 0;
@@ -111,9 +113,11 @@ public class NameTagRendererMixin<T extends Entity> {
     }
 
     private static void updatePlayers() throws IOException {
+        coolDown--;
         assert URMWHelper.minecraftClient.player != null;
-        if (URMWHelper.minecraftClient.player.getEntityWorld().getTime() % 1200 == 0){
+        if (URMWHelper.minecraftClient.player.getEntityWorld().getTime() % 1200 == 0 && coolDown < 0){
             Runnable r = new UpdatePlayers();
+            coolDown = 200;
             new Thread(r).start();
             mwPlayerMap = new HashMap<>();
         }
