@@ -93,7 +93,7 @@ public class Calculate implements Runnable{
     private static String makeLine(List<Map<MWPlayer, Rating>> ratings, int index){
         String line = "";
         Map<MWPlayer, Rating> ratingMap = ratings.get(index);
-        URMWHelper.LOGGER.info(ratingMap);
+        //URMWHelper.LOGGER.info(ratingMap);
         for (MWPlayer player : ratingMap.keySet()) {
             Rating rating = ratingMap.get(player);
 

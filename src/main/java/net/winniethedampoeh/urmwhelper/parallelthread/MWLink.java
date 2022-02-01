@@ -66,6 +66,7 @@ public class MWLink implements Runnable{
             e.printStackTrace();
             return;
         }
+        new UpdatePlayers().run();
         ctx.getSource().sendFeedback(new LiteralText(Formatting.GRAY + mwPlayer.getName() + " linked with " + uuid.toString() + " (" + player + ")" ));
     }
 

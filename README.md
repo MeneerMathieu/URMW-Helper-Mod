@@ -4,6 +4,10 @@
 
 URMW-Helper is a fully client side Fabric mod that works with the URMW API. The goal of the mod is to get rid of the awkward switching between Discord and Minecraft when you want to calculate the outcome of a ranked match.
 
+Adds nametag Trueskill displays:
+
+INSERT IMAGE
+
 Adds commands like:
 - ``/calculate``
 - ``/trueskill``
@@ -23,7 +27,7 @@ For help, use ``/fcc help`` (which stands for Fabric client command help)
 # Requirements:
 - Fabric API
 
-# NOW A SECOND RELEASE
+# NOW A THIRD RELEASE
 
 
 ![image](https://user-images.githubusercontent.com/61655741/151469358-c0f62c3f-4e7c-454c-ac40-20d29dd54ce2.png)

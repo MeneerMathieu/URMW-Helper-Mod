@@ -59,7 +59,7 @@ public class Match implements Runnable{
     }
 
     private String printPlayers(List<MatchesPlayer> playerList) {
-        URMWHelper.LOGGER.info(playerList);
+        //URMWHelper.LOGGER.info(playerList);
         String print = "";
         for (MatchesPlayer player : playerList){
 

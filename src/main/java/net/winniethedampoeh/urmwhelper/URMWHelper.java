@@ -1,14 +1,21 @@
 package net.winniethedampoeh.urmwhelper;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.MinecraftClient;
 import net.winniethedampoeh.urmwhelper.config.Config;
 import net.winniethedampoeh.urmwhelper.storage.Players;
+import net.winniethedampoeh.urmwhelper.storage.UuidMap;
+import net.winniethedampoeh.urmwhelper.util.CallBackRegister;
+import net.winniethedampoeh.urmwhelper.util.KeyBindsRegister;
 import net.winniethedampoeh.urmwhelper.util.ModCommandRegister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
+import java.util.UUID;
 
 public class URMWHelper implements ModInitializer {
     // This logger is used to write text to the console and the log file.
@@ -17,6 +24,8 @@ public class URMWHelper implements ModInitializer {
     public static final Logger LOGGER = LogManager.getLogger("urmwhelper");
 
     private static URMWHelper INSTANCE;
+    public static final MinecraftClient minecraftClient = MinecraftClient.getInstance();
+    public Map<UUID, String> UUIDMap;
     private Config config;
 
     @Override
@@ -32,12 +41,24 @@ public class URMWHelper implements ModInitializer {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+        try {
+            UuidMap.makeMap();
+            this.UUIDMap = UuidMap.getMap();
+        } catch (FileNotFoundException | ParseException e) {
+            e.printStackTrace();
+        }
         ModCommandRegister.registerCommands();
+        KeyBindsRegister.registerKeyBinds();
+        CallBackRegister.registerCallBacks();
         LOGGER.info("URWM-Helper loaded.");
     }
 
     public static URMWHelper getInstance(){
         return INSTANCE;
+    }
+
+    public void setUUIDMap(Map<UUID, String> map){
+        this.UUIDMap = map;
     }
 
     public Config getConfig(){

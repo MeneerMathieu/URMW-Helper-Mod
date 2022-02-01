@@ -16,11 +16,17 @@ public class Config {
     private static final String directoryPath= "./config";
 
     private final String webAddress;
+    private final Float scale;
+    private final Float height;
+    private final boolean defaultRendering;
 
     public Config() throws FileNotFoundException, ParseException {
         loadConfig();
         JSONObject config = parseJSON();
         this.webAddress = (String) config.get("api-address");
+        this.scale = Float.valueOf((String) config.get("scale"));
+        this.height = Float.valueOf((String) config.get("height"));
+        this.defaultRendering = (boolean) config.get("default-rendering");
     }
 
     public static void loadConfig(){
@@ -29,9 +35,13 @@ public class Config {
             new File(directoryPath).mkdirs();
             if(configFile.createNewFile()){
                 FileWriter writer = new FileWriter(filepath);
-                writer.write("{\n" +
-                        "  \"api-address\": \"https://urmw.markng.me/api/\"\n" +
-                        "}");
+                writer.write("""
+                        {
+                          "api-address": "https://urmw.markng.me/api/"
+                          "scale": "0.50"
+                          "height": "0.80"
+                          "default-rendering": true
+                        }""");
                 writer.close();
                 URMWHelper.LOGGER.info("New config file made");
             }else {
@@ -58,4 +68,14 @@ public class Config {
     public String getWebAddress(){
         return this.webAddress;
     }
+    public Float getScale(){
+        return this.scale;
+    }
+    public Float getHeight(){
+        return this.height;
+    }
+    public boolean getDefaultRendering(){
+        return this.defaultRendering;
+    }
+
 }

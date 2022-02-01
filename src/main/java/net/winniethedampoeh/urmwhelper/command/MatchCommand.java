@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.winniethedampoeh.urmwhelper.mwapi.sortType;
 import net.winniethedampoeh.urmwhelper.parallelthread.Match;
-import net.winniethedampoeh.urmwhelper.parallelthread.Tournament;
 
 public class MatchCommand {
 

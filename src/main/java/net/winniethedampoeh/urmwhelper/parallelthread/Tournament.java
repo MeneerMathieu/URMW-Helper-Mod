@@ -60,7 +60,7 @@ public class Tournament implements Runnable{
     }
 
     private String printPlayers(List<MWPlayer> playerList) {
-        URMWHelper.LOGGER.info(playerList);
+        //URMWHelper.LOGGER.info(playerList);
         String print = "";
         for (MWPlayer player : playerList){
             print = print.concat(player.getName() + " ");

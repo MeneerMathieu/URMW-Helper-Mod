@@ -5,16 +5,9 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.command.argument.EntityArgumentType;
-import net.minecraft.text.LiteralText;
-import net.minecraft.util.Formatting;
-import net.winniethedampoeh.urmwhelper.URMWHelper;
-import net.winniethedampoeh.urmwhelper.parallelthread.MWLink;
 import net.winniethedampoeh.urmwhelper.parallelthread.MWUnlink;
+import net.winniethedampoeh.urmwhelper.parallelthread.UpdatePlayers;
 
-import java.util.List;
-import java.util.UUID;
 
 public class MWUnlinkCommand {
 
@@ -27,6 +20,10 @@ public class MWUnlinkCommand {
     private static int run(CommandContext<FabricClientCommandSource> ctx) {
         Runnable r = new MWUnlink(ctx);
         new Thread(r).start();
+
+        Runnable l = new UpdatePlayers();
+        new Thread(l).start();
+
         return 1;
     }
 }

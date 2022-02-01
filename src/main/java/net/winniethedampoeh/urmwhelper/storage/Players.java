@@ -43,4 +43,10 @@ public class Players {
         return this.players;
     }
 
+    public Players() throws FileNotFoundException, ParseException {
+        this.players = this.getPlayers();
+    }
+
+
+
 }

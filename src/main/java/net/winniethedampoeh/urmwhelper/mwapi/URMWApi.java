@@ -236,6 +236,7 @@ public class URMWApi {
                     informationString.append(scanner.nextLine());
                 }
                 scanner.close();
+                URMWHelper.LOGGER.info("Data loaded from the URMW API. If this happens too often (a couple times within 10 secs without running commands), please inform WinnieTheDampoeh");
                 return informationString;
             }
         }catch(Exception e){

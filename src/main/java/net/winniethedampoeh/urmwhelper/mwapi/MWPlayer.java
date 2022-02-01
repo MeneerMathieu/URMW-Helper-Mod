@@ -1,9 +1,12 @@
 package net.winniethedampoeh.urmwhelper.mwapi;
 
 import de.gesundkrank.jskills.Rating;
+import net.winniethedampoeh.urmwhelper.storage.Players;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +52,32 @@ public class MWPlayer {
         this.rankName = (String) playerData.get("rankName");
     }
 
+    public MWPlayer(String playerName, boolean fromFile) throws NullPointerException, FileNotFoundException, ParseException {
+        if (!fromFile) throw new NullPointerException();
+        JSONArray players = new Players().getPlayers();
+        for (Object player : players){
+            JSONObject playerData = (JSONObject) player;
+            if (playerData.get("name").equals(playerName)){
+                this.name = (String) playerData.get("name");
+                this.skill = Construct.rating((JSONObject) playerData.get("skill"));
+                this.peakSkill = Construct.rating((JSONObject) playerData.get("peakSkill"));
+                this.ranking = Math.toIntExact((long) playerData.get("ranking"));
+                this.wins = Math.toIntExact((long) playerData.get("wins"));
+                this.losses = Math.toIntExact((long) playerData.get("losses"));
+                this.winRatio = (float) this.wins/(this.wins + this.losses);
+                this.timesPlacedFirst =  Math.toIntExact((long) playerData.get("timesPlacedFirst"));
+                this.timesPlacedSecond =  Math.toIntExact((long) playerData.get("timesPlacedSecond"));
+                this.timesPlacedThird =  Math.toIntExact((long) playerData.get("timesPlacedThird"));
+                this.winsAgainst = Construct.listAgainst((JSONObject) playerData.get("winsAgainst"));
+                this.lossesAgainst = Construct.listAgainst((JSONObject) playerData.get("lossesAgainst"));
+                this.streak = Math.toIntExact((long) playerData.get("streak"));
+                this.completedAchievements = Construct.listFromJSONArray((JSONArray) playerData.get("completedAchievements"));
+                this.rankName = (String) playerData.get("rankName");
+                return;
+            }
+        }
+        throw new NullPointerException();
+    }
 
     /**
      *@return the playername of a MWPlayer object.
