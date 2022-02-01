@@ -6,7 +6,8 @@ URMW-Helper is a fully client side Fabric mod that works with the URMW API. The 
 
 Adds nametag Trueskill displays:
 
-INSERT IMAGE
+![2022-02-01_22 44 46](https://user-images.githubusercontent.com/61655741/152056619-b5b8cbf0-725b-4d39-a954-7f5400738a7a.png)
+
 
 Adds commands like:
 - ``/calculate``
