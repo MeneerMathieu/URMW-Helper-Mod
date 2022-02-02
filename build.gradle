@@ -32,12 +32,6 @@ dependencies {
     include(implementation( group: 'de.gesundkrank.jskills', name: 'jskills', version: '1.1'))
     // https://mvnrepository.com/artifact/me.xdrop/fuzzywuzzy
     include(implementation (group: 'me.xdrop', name: 'fuzzywuzzy', version: '1.3.1'))
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    include(implementation (group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.1'))
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-    include(implementation ('com.fasterxml.jackson.core:jackson-core:2.13.1'))
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-    include(implementation (group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.1'))
     // https://mvnrepository.com/artifact/org.ejml/simple
     include(implementation ('org.ejml:simple:0.30'))
 

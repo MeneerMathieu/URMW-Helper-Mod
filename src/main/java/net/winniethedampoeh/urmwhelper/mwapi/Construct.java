@@ -1,15 +1,15 @@
 package net.winniethedampoeh.urmwhelper.mwapi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+;
 import de.gesundkrank.jskills.GameInfo;
 import de.gesundkrank.jskills.Rating;
+import net.winniethedampoeh.urmwhelper.URMWHelper;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import static java.lang.Double.parseDouble;
 
 public class Construct {
@@ -43,14 +43,15 @@ public class Construct {
 
 
     protected static Map<String, Integer> listAgainst(JSONObject list){
-        String jsonString = list.toJSONString();
-        ObjectMapper objectMapper = new ObjectMapper();
-        try{
-            return objectMapper.readValue(jsonString, Map.class);
-        }catch (Exception e){
-            System.out.println(e);
-            return null;
+        Map<String, Integer> map = new HashMap<>();
+        Iterator<String> iterator = list.keySet().iterator();;
+        while (iterator.hasNext()){
+            String next = iterator.next();
+            int i = (int) (long) list.get(next);
+            map.put(next, i);
         }
+        URMWHelper.LOGGER.info(map);
+        return map;
     }
 
     protected static List<String> listFromJSONArray(JSONArray array){

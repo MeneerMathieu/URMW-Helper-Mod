@@ -31,7 +31,7 @@ public class Achievement implements Runnable {
         }
         String name = achievement.getName();
         String description = achievement.getDescription();
-        List<MWPlayer> playersCompleted = achievement.getPlayersCompleted();
+        List<String> playersCompleted = achievement.getPlayersCompleted();
 
         String line0 = Formatting.DARK_GRAY + "Achievement: " + Formatting.AQUA  + name + "\n";
         String line1 = Formatting.GRAY + "  " + description + "\n";
@@ -39,14 +39,14 @@ public class Achievement implements Runnable {
         ctx.getSource().sendFeedback(new LiteralText(line0 + line1 +line2));
     }
 
-    private String generateString(List<MWPlayer> playersCompleted) {
+    private String generateString(List<String> playersCompleted) {
         String output = "";
         try {
             for (int i = 0; i < playersCompleted.size(); i++){
                 if (i == 0){
-                    output = output.concat(playersCompleted.get(i).getName());
+                    output = output.concat(playersCompleted.get(i));
                 }else {
-                    output = output.concat(", " + playersCompleted.get(i).getName());
+                    output = output.concat(", " + playersCompleted.get(i));
                 }
             }
         }catch (Exception e){

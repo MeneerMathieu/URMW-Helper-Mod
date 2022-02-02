@@ -10,7 +10,7 @@ public class MWAchievement {
 
     private final String name;
     private final String description;
-    private final List<MWPlayer> playersCompleted;
+    private final List<String> playersCompleted;
 
     /**
      *
@@ -20,7 +20,7 @@ public class MWAchievement {
         JSONObject achData = URMWApi.getAchievementData(name);
         this.name = (String) achData.get("name");
         this.description = (String) achData.get("description");
-        this.playersCompleted = Construct.playerListFromJSONArray((JSONArray) achData.get("playersCompleted"));
+        this.playersCompleted = Construct.listFromJSONArray((JSONArray) achData.get("playersCompleted"));
 
     }
 
@@ -32,7 +32,7 @@ public class MWAchievement {
         return this.description;
     }
 
-    public List<MWPlayer> getPlayersCompleted(){
+    public List<String> getPlayersCompleted(){
         return this.playersCompleted;
     }
 }
