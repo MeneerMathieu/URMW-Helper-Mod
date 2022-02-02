@@ -15,18 +15,43 @@ public class Config {
     private static final String filepath = "./config/urmw-helper.config.json";
     private static final String directoryPath= "./config";
 
-    private final String webAddress;
-    private final Float scale;
-    private final Float height;
-    private final boolean defaultRendering;
+    private static final String defaultConfig = """
+                        {
+                          "api-address": "https://urmw.markng.me/api/",
+                          "scale": "0.50",
+                          "height": "0.80",
+                          "default-rendering": true
+                        }""";
 
-    public Config() throws FileNotFoundException, ParseException {
+    private String webAddress;
+    private Float scale;
+    private Float height;
+    private boolean defaultRendering;
+
+    public Config() throws IOException, ParseException {
         loadConfig();
-        JSONObject config = parseJSON();
-        this.webAddress = (String) config.get("api-address");
-        this.scale = Float.valueOf((String) config.get("scale"));
-        this.height = Float.valueOf((String) config.get("height"));
-        this.defaultRendering = (boolean) config.get("default-rendering");
+        JSONObject config;
+        String webAdress;
+        float scale;
+        float height;
+        boolean defaultRendering;
+
+        try {
+            config = parseJSON();
+            this.webAddress = (String) config.get("api-address");
+            this.scale = Float.valueOf((String) config.get("scale"));
+            this.height = Float.valueOf((String) config.get("height"));
+            this.defaultRendering = (boolean) config.get("default-rendering");
+        }catch (Exception e){
+            resetConfig();
+            config = parseJSON();
+            this.webAddress = (String) config.get("api-address");
+            this.scale = Float.valueOf((String) config.get("scale"));
+            this.height = Float.valueOf((String) config.get("height"));
+            this.defaultRendering = (boolean) config.get("default-rendering");
+        }
+
+
     }
 
     public static void loadConfig(){
@@ -35,13 +60,7 @@ public class Config {
             new File(directoryPath).mkdirs();
             if(configFile.createNewFile()){
                 FileWriter writer = new FileWriter(filepath);
-                writer.write("""
-                        {
-                          "api-address": "https://urmw.markng.me/api/"
-                          "scale": "0.50"
-                          "height": "0.80"
-                          "default-rendering": true
-                        }""");
+                writer.write(defaultConfig);
                 writer.close();
                 URMWHelper.LOGGER.info("New config file made");
             }else {
@@ -51,6 +70,13 @@ public class Config {
             URMWHelper.LOGGER.info("Something went wrong while creating a config file.");
             e.printStackTrace();
         }
+    }
+
+    private static void resetConfig() throws IOException {
+        FileWriter writer = new FileWriter(filepath);
+        writer.write(defaultConfig);
+        writer.close();
+        URMWHelper.LOGGER.warn("Config was not in the right format and has been reset.");
     }
 
     private JSONObject parseJSON() throws FileNotFoundException, ParseException {
