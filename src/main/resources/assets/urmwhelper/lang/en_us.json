@@ -1,4 +1,5 @@
 {
   "key.urmwhelper.toggle-render" : "Toggle nametag rendering",
+  "key.urmwhelper.toggle-self-render" : "Toggle nametag rendering for yourself",
   "category.urmwhelper.all" : "URMW-Helper"
 }

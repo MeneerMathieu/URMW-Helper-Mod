@@ -6,9 +6,16 @@ import net.winniethedampoeh.urmwhelper.URMWHelper;
 
 public class Rendering {
     public static boolean doRendering = URMWHelper.getInstance().getConfig().getDefaultRendering();
+    public static boolean doSelfRendering= URMWHelper.getInstance().getConfig().getDefaultRenderSelf();
 
     public static void toggleRendering(){
         doRendering = !doRendering;
         URMWHelper.minecraftClient.player.sendMessage(new LiteralText(Formatting.GREEN + "Toggled name tag rendering, now " + doRendering), true);
+    }
+
+
+    public static void toggleSelfRendering(){
+        doSelfRendering = !doSelfRendering;
+        URMWHelper.minecraftClient.player.sendMessage(new LiteralText(Formatting.GREEN + "Toggled name tag rendering for yourself, now " + doSelfRendering),true);
     }
 }

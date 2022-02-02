@@ -58,6 +58,7 @@ public class NameTagRendererMixin<T extends Entity> {
         if (!Rendering.doRendering) return;
         if (entity instanceof PlayerEntity){
             if (entity.isSpectator()) return;
+            if (entity.equals(URMWHelper.minecraftClient.player) && !Rendering.doSelfRendering) return;
             updatePlayers();
             Map<UUID, String> UUIDMap = URMWHelper.getInstance().UUIDMap;
             for (UUID uuid : UUIDMap.keySet()){

@@ -20,13 +20,15 @@ public class Config {
                           "api-address": "https://urmw.markng.me/api/",
                           "scale": "0.50",
                           "height": "0.80",
-                          "default-rendering": true
+                          "default-rendering": true,
+                          "default-render-self": false
                         }""";
 
     private String webAddress;
     private Float scale;
     private Float height;
     private boolean defaultRendering;
+    private boolean defaultRenderSelf;
 
     public Config() throws IOException, ParseException {
         loadConfig();
@@ -42,6 +44,7 @@ public class Config {
             this.scale = Float.valueOf((String) config.get("scale"));
             this.height = Float.valueOf((String) config.get("height"));
             this.defaultRendering = (boolean) config.get("default-rendering");
+            this.defaultRenderSelf = (boolean) config.get("default-render-self");
         }catch (Exception e){
             resetConfig();
             config = parseJSON();
@@ -49,6 +52,7 @@ public class Config {
             this.scale = Float.valueOf((String) config.get("scale"));
             this.height = Float.valueOf((String) config.get("height"));
             this.defaultRendering = (boolean) config.get("default-rendering");
+            this.defaultRenderSelf = (boolean) config.get("default-render-self");
         }
 
 
@@ -102,6 +106,9 @@ public class Config {
     }
     public boolean getDefaultRendering(){
         return this.defaultRendering;
+    }
+    public boolean getDefaultRenderSelf(){
+        return this.defaultRenderSelf;
     }
 
 }
