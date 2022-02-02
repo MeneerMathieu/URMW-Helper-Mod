@@ -34,7 +34,7 @@ How do I download the mod?
 
  - Download the .jar file from the releases. Place it in your ``.minecraft/mods`` folder
  - Download Fabric from https://fabricmc.net/use/installer/, make sure that you choose the right Minecraft version when running the installer.
- - Download the Fabric API from https://www.curseforge.com/minecraft/mc-mods/fabric-api/files, make sure that you download the right version. (This mod is in 1.17.1). Place it in your ``.minecraft/mods folder``
+ - Download the Fabric API from https://www.curseforge.com/minecraft/mc-mods/fabric-api/files, make sure that you download the right version. (This mod is in 1.17.1). Place it in your ``.minecraft/mods`` folder
  - Run the game.
 
 How do I get ``/help`` for all the commands?
