@@ -12,6 +12,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
+import net.minecraft.text.TextColor;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Matrix4f;
 import net.winniethedampoeh.urmwhelper.URMWHelper;
 import net.winniethedampoeh.urmwhelper.config.Rendering;
@@ -71,7 +74,11 @@ public class NameTagRendererMixin<T extends Entity> {
                         }
                         String TS = String.valueOf((int) round(mwPlayer.getSkill().getConservativeRating()));
                         int Ranking = mwPlayer.getRanking() + 1;
-                        MutableText text = new LiteralText(TS + " TS, " + Ranking + getSuffix(Ranking));
+                        TextColor color = entity.getDisplayName().getStyle().getColor();
+                        if (color == null){
+                            color = TextColor.fromFormatting(Formatting.WHITE);
+                        }
+                        MutableText text = new LiteralText(Formatting.byName(color.getName()) + TS + " TS, " + Ranking + getSuffix(Ranking));
                         float scale = 0.05f * URMWHelper.getInstance().getConfig().getScale();
                         float f = ((Entity)entity).getHeight() + URMWHelper.getInstance().getConfig().getHeight();
                         int i = "deadmau5".equals(text.getString()) ? -10 : 0;
