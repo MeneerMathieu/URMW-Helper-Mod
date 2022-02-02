@@ -6,7 +6,8 @@ URMW-Helper is a fully client side Fabric mod that works with the URMW API. The 
 
 Adds nametag Trueskill displays:
 
-INSERT IMAGE
+![2022-02-01_22 44 46](https://user-images.githubusercontent.com/61655741/152056619-b5b8cbf0-725b-4d39-a954-7f5400738a7a.png)
+
 
 Adds commands like:
 - ``/calculate``
@@ -26,6 +27,28 @@ For help, use ``/fcc help`` (which stands for Fabric client command help)
 
 # Requirements:
 - Fabric API
+
+# (f)aq
+
+How do I download the mod?
+
+ - Download the .jar file from the releases. Place it in your ``.minecraft/mods folder``
+ - Download Fabric from https://fabricmc.net/use/installer/, make sure that you choose the right Minecraft version when running the installer.
+ - Download the Fabric API from https://www.curseforge.com/minecraft/mc-mods/fabric-api/files, make sure that you download the right version. (This mod is in 1.17.1). Place it in your ``.minecraft/mods folder``
+ - Run the game.
+
+How do I get ``/help`` for all the commands?
+
+- Run ``/fcc help``
+
+Someone's nametag is not showing. How do I add their name to my mod?
+
+- use ``/mwlink [PLAYERNAME] [MWPlayer]`` to render their nametag.
+
+``=`` should toggle rendering, but isn't working. How do I fix this?
+
+- go to your Minecraft controls and make sure that the keybind in ``URMW-Helper`` isn't conflicting with any other keybinds.
+  
 
 # NOW A THIRD RELEASE
 
