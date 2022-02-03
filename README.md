@@ -20,6 +20,7 @@ Adds commands like:
 - ``/ranklist``
 - ``/mwlink``
 - ``/mwunlink``
+- ``/history``
 
 And their aliases. Work in progress to add more.
 
