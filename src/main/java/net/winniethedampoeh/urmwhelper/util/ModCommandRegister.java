@@ -16,5 +16,7 @@ public class ModCommandRegister {
         RankListCommand.register(ClientCommandManager.DISPATCHER);
         MWLinkCommand.register(ClientCommandManager.DISPATCHER);
         MWUnlinkCommand.register(ClientCommandManager.DISPATCHER);
+        TableFlipCommand.register(ClientCommandManager.DISPATCHER);
+        UnflipCommand.register(ClientCommandManager.DISPATCHER);
     }
 }
