@@ -97,8 +97,7 @@ public class URMWApi {
      * @return a JSON object with the raw data from https://urmw.markng.me/api/players, but only one player. Name has to be
      * an exact match.
      */
-    public static @Nullable JSONObject getPlayerData(String playerName){
-        JSONArray players = getPlayers();
+    public static @Nullable JSONObject getPlayerData(String playerName, JSONArray players){
         for (Object player : players) {
             JSONObject playerData = (JSONObject) player;
             String name = (String) playerData.get("name");
@@ -145,8 +144,7 @@ public class URMWApi {
      *
      * @return a list of names of all URMW players.
      */
-    public static List<String> getPlayerList(){
-        JSONArray players = getPlayers();
+    public static List<String> getPlayerList(JSONArray players){
         List<String> playerList = new ArrayList<>();
         for (Object player : players) {
             JSONObject playerData = (JSONObject) player;
@@ -161,8 +159,8 @@ public class URMWApi {
      * @param name Your search term.
      * @return the correct player name that belongs with your search term.
      */
-    public static @Nullable String searchPlayer(@NotNull String name){
-        List<String> playerList = getPlayerList();
+    public static @Nullable String searchPlayer(@NotNull String name, JSONArray playersData){
+        List<String> playerList = getPlayerList(playersData);
         if (playerList.size() == 0){
             return null;
         }

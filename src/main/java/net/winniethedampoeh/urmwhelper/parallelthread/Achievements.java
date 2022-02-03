@@ -7,6 +7,8 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
+import net.winniethedampoeh.urmwhelper.mwapi.URMWApi;
+import org.json.simple.JSONArray;
 
 import java.util.List;
 
@@ -21,8 +23,9 @@ public class Achievements implements Runnable{
     public void run(){
         CommandContext<FabricClientCommandSource> ctx = this.ctx;
         MWPlayer player;
+        JSONArray playerdata = URMWApi.getPlayers();
         try{
-            player = new MWPlayer(StringArgumentType.getString(ctx,"player"));
+            player = new MWPlayer(StringArgumentType.getString(ctx,"player"), playerdata);
         }catch (Exception e){
             ctx.getSource().sendFeedback(new LiteralText(Formatting.RED + "Player not found."));
             return;

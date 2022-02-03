@@ -7,8 +7,10 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.URMWHelper;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
+import net.winniethedampoeh.urmwhelper.mwapi.URMWApi;
 import net.winniethedampoeh.urmwhelper.storage.UuidMap;
 import org.jetbrains.annotations.Nullable;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -54,7 +56,8 @@ public class MWLink implements Runnable{
 
         MWPlayer mwPlayer = null;
         try {
-            mwPlayer = new MWPlayer(StringArgumentType.getString(ctx, "mwplayer"));
+            JSONArray playerData = URMWApi.getPlayers();
+            mwPlayer = new MWPlayer(StringArgumentType.getString(ctx, "mwplayer"), playerData);
         }catch (Exception e){
             ctx.getSource().sendFeedback(new LiteralText(Formatting.RED + "Missile wars player not found."));
             return;

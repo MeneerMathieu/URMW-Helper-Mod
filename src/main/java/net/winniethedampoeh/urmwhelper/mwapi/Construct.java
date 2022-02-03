@@ -70,10 +70,10 @@ public class Construct {
         return list;
     }
 
-    protected static @NotNull List<MWPlayer> playerListFromJSONArray(@NotNull JSONArray array){
+    protected static @NotNull List<MWPlayer> playerListFromJSONArray(@NotNull JSONArray array, JSONArray playerData){
         List<MWPlayer> list = new ArrayList<>();
         for (int i = 0; i < array.size(); i++){
-            MWPlayer player = new MWPlayer((String) array.get(i));
+            MWPlayer player = new MWPlayer((String) array.get(i), playerData);
             list.add(i, player);
         }
         return list;

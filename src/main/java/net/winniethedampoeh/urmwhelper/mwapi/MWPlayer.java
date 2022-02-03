@@ -33,8 +33,8 @@ public class MWPlayer {
      * Constructs a new MWPlayer object. Gets all the data from the URMW API.
      * @param playerName doesn't have to be the exact player name. Can also be something else. For example: "winnie" generates MWPlayer WinnieTheDampoeh
      */
-    public MWPlayer(String playerName){
-        JSONObject playerData = URMWApi.getPlayerData(URMWApi.searchPlayer(playerName));
+    public MWPlayer(String playerName, JSONArray playersData){
+        JSONObject playerData = URMWApi.getPlayerData(URMWApi.searchPlayer(playerName, playersData), playersData);
         this.name = (String) playerData.get("name");
         this.skill = Construct.rating((JSONObject) playerData.get("skill"));
         this.peakSkill = Construct.rating((JSONObject) playerData.get("peakSkill"));

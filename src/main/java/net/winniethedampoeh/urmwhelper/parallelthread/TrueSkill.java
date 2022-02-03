@@ -7,6 +7,8 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
+import net.winniethedampoeh.urmwhelper.mwapi.URMWApi;
+import org.json.simple.JSONArray;
 
 import java.util.Objects;
 
@@ -38,10 +40,11 @@ public class TrueSkill implements Runnable{
             arg = " ";
         }
         try {
+            JSONArray playerData = URMWApi.getPlayers();
             if (Objects.equals(arg, " ")){
-                player = new MWPlayer(context.getSource().getPlayer().getName().asString());
+                player = new MWPlayer(context.getSource().getPlayer().getName().asString(), playerData);
             }else {
-                player = new MWPlayer(arg);
+                player = new MWPlayer(arg, playerData);
             }
         }catch (Exception e){
             LiteralText message = new LiteralText(Formatting.RED + "Player not found.");

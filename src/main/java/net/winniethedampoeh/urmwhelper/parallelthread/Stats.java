@@ -8,6 +8,8 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.command.CommandTarget;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
+import net.winniethedampoeh.urmwhelper.mwapi.URMWApi;
+import org.json.simple.JSONArray;
 
 import java.util.Locale;
 
@@ -27,10 +29,11 @@ public class Stats implements Runnable{
         CommandContext<FabricClientCommandSource> ctx = this.ctx;
         CommandTarget target = this.target;
         MWPlayer player = null;
+        JSONArray players = URMWApi.getPlayers();
         try{
             switch (target){
-                case SENDER -> player = new MWPlayer(ctx.getSource().getPlayer().getName().asString());
-                case STRING -> player = new MWPlayer(StringArgumentType.getString(ctx, "player"));
+                case SENDER -> player = new MWPlayer(ctx.getSource().getPlayer().getName().asString(), players);
+                case STRING -> player = new MWPlayer(StringArgumentType.getString(ctx, "player"), players);
             }
         }catch (Exception e){
             String message = Formatting.RED + "Player not found.";

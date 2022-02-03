@@ -36,9 +36,10 @@ public class MWTournament {
             case RECENT -> tourney = (JSONObject) URMWApi.getRecentTourneys(get).get(get - 1);
         }
         this.id = (int) (long) tourney.get("id");
-        this.first = Construct.playerListFromJSONArray((JSONArray) tourney.get("first"));
-        this.second = Construct.playerListFromJSONArray((JSONArray) tourney.get("second"));
-        this.third = Construct.playerListFromJSONArray((JSONArray) tourney.get("third"));
+        JSONArray playersData = URMWApi.getPlayers();
+        this.first = Construct.playerListFromJSONArray((JSONArray) tourney.get("first"), playersData);
+        this.second = Construct.playerListFromJSONArray((JSONArray) tourney.get("second"), playersData);
+        this.third = Construct.playerListFromJSONArray((JSONArray) tourney.get("third"), playersData);
         this.timestamp = Instant.parse((String) tourney.get("timestamp"));
     }
 

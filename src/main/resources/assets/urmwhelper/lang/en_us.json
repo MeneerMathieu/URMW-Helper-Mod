@@ -1,5 +1,9 @@
 {
   "key.urmwhelper.toggle-render" : "Toggle nametag rendering",
   "key.urmwhelper.toggle-self-render" : "Toggle nametag rendering for yourself",
-  "category.urmwhelper.all" : "URMW-Helper"
+  "category.urmwhelper.all" : "URMW-Helper",
+  "command.urmwhelper.history.0" : "%s history against %s",
+  "command.urmwhelper.history.wins" : "  Wins: ",
+  "command.urmwhelper.history.losses" : "  Losses: ",
+  "command.urmwhelper.history.winrate" : "  Win-rate: "
 }

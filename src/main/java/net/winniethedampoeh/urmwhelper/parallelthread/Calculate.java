@@ -9,6 +9,8 @@ import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
 import net.winniethedampoeh.urmwhelper.URMWHelper;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
+import net.winniethedampoeh.urmwhelper.mwapi.URMWApi;
+import org.json.simple.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +45,13 @@ public class Calculate implements Runnable{
         }
 
         try {
+            JSONArray playerData = URMWApi.getPlayers();
             for (String s : players1) {
-                MWPlayer player = new MWPlayer(s);
+                MWPlayer player = new MWPlayer(s, playerData);
                 team1.add(player);
             }
             for (String s : players2) {
-                MWPlayer player = new MWPlayer(s);
+                MWPlayer player = new MWPlayer(s, playerData);
                 team2.add(player);
             }
         }catch (Exception e){
