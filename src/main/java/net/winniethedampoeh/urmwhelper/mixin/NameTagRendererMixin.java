@@ -40,6 +40,8 @@ import static java.lang.Math.round;
 @Mixin(EntityRenderer.class)
 public class NameTagRendererMixin<T extends Entity> {
 
+
+    private final double maxRenderDistance = 4096;
     @Shadow
     @Final
     private TextRenderer textRenderer;
@@ -57,6 +59,7 @@ public class NameTagRendererMixin<T extends Entity> {
     private void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) throws IOException, ParseException {
         if (!Rendering.doRendering) return;
         if (entity instanceof PlayerEntity){
+            if (entity.isInvisibleTo(URMWHelper.minecraftClient.player)) return;
             if (entity.isSpectator()) return;
             if (entity.equals(URMWHelper.minecraftClient.player) && !Rendering.doSelfRendering) return;
             updatePlayers();
@@ -123,7 +126,7 @@ public class NameTagRendererMixin<T extends Entity> {
     private static void updatePlayers() throws IOException {
         coolDown--;
         assert URMWHelper.minecraftClient.player != null;
-        if (URMWHelper.minecraftClient.player.getEntityWorld().getTime() % 1200 == 0 && coolDown < 0){
+        if (URMWHelper.minecraftClient.player.getEntityWorld().getTime() % 6000 == 0 && coolDown < 0){
             Runnable r = new UpdatePlayers();
             coolDown = 200;
             new Thread(r).start();
