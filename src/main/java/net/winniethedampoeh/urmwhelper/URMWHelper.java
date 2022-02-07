@@ -3,6 +3,7 @@ package net.winniethedampoeh.urmwhelper;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.winniethedampoeh.urmwhelper.config.Config;
+import net.winniethedampoeh.urmwhelper.mwapi.URMWApi;
 import net.winniethedampoeh.urmwhelper.storage.Players;
 import net.winniethedampoeh.urmwhelper.storage.UuidMap;
 import net.winniethedampoeh.urmwhelper.util.CallBackRegister;
@@ -10,6 +11,7 @@ import net.winniethedampoeh.urmwhelper.util.KeyBindsRegister;
 import net.winniethedampoeh.urmwhelper.util.ModCommandRegister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
@@ -27,6 +29,7 @@ public class URMWHelper implements ModInitializer {
     public static final MinecraftClient minecraftClient = MinecraftClient.getInstance();
     public Map<UUID, String> UUIDMap;
     private Config config;
+    public JSONArray players;
 
     @Override
     public void onInitialize() {
@@ -47,6 +50,7 @@ public class URMWHelper implements ModInitializer {
         } catch (FileNotFoundException | ParseException e) {
             e.printStackTrace();
         }
+        this.players = URMWApi.getPlayers();
         ModCommandRegister.registerCommands();
         KeyBindsRegister.registerKeyBinds();
         CallBackRegister.registerCallBacks();

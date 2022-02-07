@@ -12,7 +12,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Matrix4f;
@@ -20,7 +19,6 @@ import net.winniethedampoeh.urmwhelper.URMWHelper;
 import net.winniethedampoeh.urmwhelper.config.Rendering;
 import net.winniethedampoeh.urmwhelper.mwapi.MWPlayer;
 import net.winniethedampoeh.urmwhelper.parallelthread.UpdatePlayers;
-import net.winniethedampoeh.urmwhelper.storage.UuidMap;
 import org.json.simple.parser.ParseException;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -67,7 +65,7 @@ public class NameTagRendererMixin<T extends Entity> {
             for (UUID uuid : UUIDMap.keySet()){
                 if (entity.getUuid().equals(uuid)){
                     double dis = dispatcher.getSquaredDistanceToCamera(entity);
-                    if (dis <=4096D){
+                    if (dis <= maxRenderDistance){
                         boolean bl = !((Entity)entity).isSneaky();
                         MWPlayer mwPlayer;
                         if (mwPlayerMap.getOrDefault(uuid, null) != null){
