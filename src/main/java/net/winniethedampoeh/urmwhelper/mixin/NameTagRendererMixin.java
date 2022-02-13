@@ -90,7 +90,7 @@ public class NameTagRendererMixin<T extends Entity> {
         //for normal nametag
         int nameColor = getColor(mwPlayer.getRankName());
         Text playerName;
-        if (nameColor != -1){
+        if (nameColor != -1 && Rendering.doRenderColor){
             playerName = new LiteralText(name.getString()).setStyle(Style.EMPTY.withColor(getColor(mwPlayer.getRankName())));
         }else {
             playerName = name;

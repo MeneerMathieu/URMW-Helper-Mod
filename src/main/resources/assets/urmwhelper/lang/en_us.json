@@ -1,7 +1,10 @@
 {
   "key.urmwhelper.toggle-render" : "Toggle nametag rendering",
+  "key.urmwhelper.toggle-color-render": "Toggle rank color rendering",
   "category.urmwhelper.all" : "URMW-Helper",
+
   "render.urmwhelper.label" : "%dTS, %s",
+
   "command.urmwhelper.history.0" : "%s history against %s",
   "command.urmwhelper.history.wins" : "  Wins: ",
   "command.urmwhelper.history.losses" : "  Losses: ",

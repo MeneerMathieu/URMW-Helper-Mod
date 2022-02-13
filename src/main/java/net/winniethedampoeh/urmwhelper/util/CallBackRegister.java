@@ -10,6 +10,9 @@ public class CallBackRegister {
             while (KeyBindsRegister.toggleRendering.wasPressed()) {
                 Rendering.toggleRendering();
             }
+            while (KeyBindsRegister.toggleColorRendering.wasPressed()){
+                Rendering.toggleRenderColor();
+            }
         });
     }
 }
