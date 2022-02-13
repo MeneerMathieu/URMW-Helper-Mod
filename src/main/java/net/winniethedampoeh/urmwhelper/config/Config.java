@@ -1,5 +1,7 @@
 package net.winniethedampoeh.urmwhelper.config;
 
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.util.math.Direction;
 import net.winniethedampoeh.urmwhelper.URMWHelper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,41 +20,33 @@ public class Config {
     private static final String defaultConfig = """
                         {
                           "api-address": "https://urmw.markng.me/api/",
-                          "scale": "0.50",
-                          "height": "0.80",
-                          "default-rendering": true,
-                          "default-render-self": false
+                          "space-between": "0.265",
+                          "below-name": true,
+                          "default-rendering": true
                         }""";
 
     private String webAddress;
-    private Float scale;
-    private Float height;
+    private Float spaceBetween;
+    private boolean belowName;
     private boolean defaultRendering;
-    private boolean defaultRenderSelf;
 
     public Config() throws IOException, ParseException {
         loadConfig();
         JSONObject config;
-        String webAdress;
-        float scale;
-        float height;
-        boolean defaultRendering;
 
         try {
             config = parseJSON();
             this.webAddress = (String) config.get("api-address");
-            this.scale = Float.valueOf((String) config.get("scale"));
-            this.height = Float.valueOf((String) config.get("height"));
+            this.spaceBetween = Float.valueOf((String) config.get("space-between"));
+            this.belowName = (boolean) config.get("below-name");
             this.defaultRendering = (boolean) config.get("default-rendering");
-            this.defaultRenderSelf = (boolean) config.get("default-render-self");
         }catch (Exception e){
             resetConfig();
             config = parseJSON();
             this.webAddress = (String) config.get("api-address");
-            this.scale = Float.valueOf((String) config.get("scale"));
-            this.height = Float.valueOf((String) config.get("height"));
+            this.spaceBetween = Float.valueOf((String) config.get("space-between"));
+            this.belowName = (boolean) config.get("below-name");
             this.defaultRendering = (boolean) config.get("default-rendering");
-            this.defaultRenderSelf = (boolean) config.get("default-render-self");
         }
 
 
@@ -93,22 +87,23 @@ public class Config {
         reader.close();
         JSONParser parser = new JSONParser();
         return (JSONObject) parser.parse(JSONString);
+
     }
 
     public String getWebAddress(){
         return this.webAddress;
     }
-    public Float getScale(){
-        return this.scale;
+    public Float getSpaceBetween(){
+        return this.spaceBetween;
     }
-    public Float getHeight(){
-        return this.height;
+    public boolean isBelowName(){
+        return this.belowName;
     }
     public boolean getDefaultRendering(){
         return this.defaultRendering;
     }
-    public boolean getDefaultRenderSelf(){
-        return this.defaultRenderSelf;
-    }
+
+
+
 
 }

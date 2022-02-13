@@ -6,8 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "URMWHelperMixin",
-    "NameTagRendererMixin"
+    "NameTagRendererMixin",
+    "URMWHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1

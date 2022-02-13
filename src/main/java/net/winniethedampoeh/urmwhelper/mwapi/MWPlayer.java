@@ -73,6 +73,7 @@ public class MWPlayer {
                 this.streak = Math.toIntExact((long) playerData.get("streak"));
                 this.completedAchievements = Construct.listFromJSONArray((JSONArray) playerData.get("completedAchievements"));
                 this.rankName = (String) playerData.get("rankName");
+                System.out.println(rankName);
                 return;
             }
         }

@@ -18,13 +18,5 @@ public class KeyBindsRegister {
                 "category.urmwhelper.all"
         ));
 
-        toggleSelfRendering = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.urmwhelper.toggle-self-render",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_MINUS,
-                "category.urmwhelper.all"
-        ));
-
-
     }
 }
